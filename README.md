@@ -1,19 +1,32 @@
-# React + Vite
+# Onitsha MarketPlace Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Buyer-facing marketplace built with React and Vite. The app includes Home, Explore, Cart, Inbox, and Profile pages, with individual product routes (`/product/:productId`), merchant store profiles (`/store/:storeId`), and nearby shops (`/shops/nearby`).
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm ci
+npm run dev
+```
 
-## React Compiler
+Run the production checks locally:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+```sh
+npm run lint
+npm run build
+npm run preview
+```
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Deploy to Cloudflare Pages
 
-## Expanding the ESLint configuration
+Connect this GitHub repository to Cloudflare Pages and use these build settings:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+
+The site is a client-rendered single-page app. Cloudflare Pages serves the SPA entry point for application routes, so product links such as `/product/586974`, store links, and `/shops/nearby` can be opened directly.
+
+See Cloudflare’s [React deployment guide](https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-site/) for Git integration and deployment setup.
